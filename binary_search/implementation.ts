@@ -1,6 +1,6 @@
 // Implement binary search to find an element
-const tetsArray = [1, 2, 3, 4, 4, 5, 5, 6, 7, 8, 9];
-const elementsToFind = 8;
+const testArray = [1, 2, 3, 4, 4, 5, 5, 6, 7, 8, 9];
+const elementToFind = 8;
 
 /**
  * Explanation:
@@ -37,7 +37,7 @@ const elementsToFind = 8;
  *
  */
 
-const findElementsByBinarySearch = (
+const binarySearch = (
   elementsArray: number[],
   elementToFind: number
 ): number => {
@@ -45,6 +45,11 @@ const findElementsByBinarySearch = (
   let end = elementsArray.length - 1;
 
   while (start <= end) {
+    /**
+     * The following mid calculation has a caveat. If our array is very large
+     * (i.e. having million elements) and our desired value lies towards the end
+     * of the array, then the start + end value will overflow our memory.
+     */
     let mid = Math.floor((start + end) / 2);
 
     if (elementsArray[mid] === elementToFind) {
@@ -61,4 +66,34 @@ const findElementsByBinarySearch = (
   return 0;
 };
 
-console.log(findElementsByBinarySearch(tetsArray, elementsToFind));
+console.log(binarySearch(testArray, elementToFind));
+
+/**
+ * Here we are calculating the mid value in a optimized way
+ * so that it never overflows our memory
+ */
+const binarySearchOptimized = (
+  elementsArray: number[],
+  elementToFind: number
+): number => {
+  let start = 0;
+  let end = elementsArray.length - 1;
+
+  while (start <= end) {
+    let mid = start + Math.floor((end - start) / 2);
+
+    if (elementsArray[mid] === elementToFind) {
+      return elementsArray[mid];
+    } else if (elementsArray[mid] < elementToFind) {
+      mid = mid + 1;
+      start = mid;
+    } else {
+      mid = mid - 1;
+      end = mid;
+    }
+  }
+
+  return 0;
+};
+
+console.log(binarySearch(testArray, elementToFind));
