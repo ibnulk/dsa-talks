@@ -30,7 +30,7 @@ const findFirstOccurance = (
     }
   }
 
-  return 0;
+  return -1;
 };
 
 console.log(findFirstOccurance(testElements, testValue));
