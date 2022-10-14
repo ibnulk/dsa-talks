@@ -15,10 +15,7 @@ const findFirstOccurance = (
     let mid = start + Math.floor((end - start) / 2);
 
     if (elements[mid] === elementToFind) {
-      if (
-        elements[mid + 1] === elementToFind &&
-        elements[mid - 1] !== elementToFind
-      ) {
+      if (elements[mid - 1] !== elementToFind) {
         return mid;
       }
       if (elements[mid - 1] === elementToFind) {
@@ -33,7 +30,7 @@ const findFirstOccurance = (
     }
   }
 
-  return 0;
+  return -1;
 };
 
 console.log(findFirstOccurance(testElements, testValue));
