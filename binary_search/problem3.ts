@@ -7,7 +7,7 @@
  */
 const findSquareRoot = (target: number) => {
   let start = 0;
-  let end = target;
+  let end = target; //  a bit more optimisation would be target / 2
 
   while (start <= end) {
     let mid = start + Math.floor((end - start) / 2);
@@ -33,4 +33,4 @@ const findSquareRoot = (target: number) => {
   }
 };
 
-console.log(findSquareRoot(7));
+console.log(findSquareRoot(8));
