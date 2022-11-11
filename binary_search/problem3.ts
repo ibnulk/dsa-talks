@@ -6,23 +6,25 @@
  * squareRoot(9) will return 3.
  */
 const findSquareRoot = (target: number) => {
-  const elements = [...Array(target + 1).keys()];
   let start = 0;
-  let end = elements.length - 1;
+  let end = target;
 
   while (start <= end) {
     let mid = start + Math.floor((end - start) / 2);
 
-    if (elements[mid] ** 2 === target) {
-      return elements[mid];
-    } else if (elements[mid] ** 2 > target) {
-      if (elements[mid - 1] ** 2 <= target) {
-        return elements[mid - 1];
+    if (mid ** 2 === target) {
+      return mid;
+    } else if (mid ** 2 > target) {
+      if ((mid - 1) ** 2 <= target) {
+        return mid - 1;
       }
       end = mid - 1;
-    } else if (elements[mid] ** 2 < target) {
-      if (elements[mid + 1] >= target) {
-        return elements[mid + 1];
+    } else if (mid ** 2 < target) {
+      if ((mid + 1) ** 2 === target) {
+        return mid + 1;
+      }
+      if ((mid + 1) ** 2 > target) {
+        return mid;
       }
       start = mid + 1;
     } else {
@@ -31,4 +33,4 @@ const findSquareRoot = (target: number) => {
   }
 };
 
-console.log(findSquareRoot(16));
+console.log(findSquareRoot(7));
