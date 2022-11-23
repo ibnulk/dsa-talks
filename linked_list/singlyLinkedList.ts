@@ -25,14 +25,14 @@ class SinglyLinkedList {
   push(elem: string | number) {
     const newNode = this.prepareNode(elem);
 
-    if (!this.head) {
-      this.head = newNode;
-      this.tail = this.head;
-    }
-
     if (this.tail) {
       this.tail.next = newNode;
       this.tail = newNode;
+    }
+
+    if (!this.head) {
+      this.head = newNode;
+      this.tail = this.head;
     }
 
     this.length++;
