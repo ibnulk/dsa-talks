@@ -105,10 +105,14 @@ class DoublyLinkedList {
     const prev = this.findAt(index - 1);
 
     if (prev !== null) {
+      if (prev.next) {
+        prev.next.prev = newNode;
+      }
       const temp = prev.next;
       prev.next = newNode;
       if (temp) {
         newNode.next = temp;
+        newNode.prev = prev;
       }
     }
     this.length++;
@@ -132,3 +136,5 @@ class DoublyLinkedList {
     return this.length;
   }
 }
+
+const dll = new DoublyLinkedList();
