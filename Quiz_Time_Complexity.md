@@ -115,7 +115,7 @@
     numberOfGrains = 8 => while loop runs 3 times. so 2^3
     numberOfGrains = 16 => while loop runs 4 times. so 2^4
 
-    So, T(n) = O(2^0 + 2^1 + 2^2 + ... + 2^n) = O(logn)
+    So, T(n) = O(2^0 + 2^1 + 2^2 + ... + 2^n) = O(2^n)
     ```
 
 4.  The following function calculates the median from an _ordered_ array.
